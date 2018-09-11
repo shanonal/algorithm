@@ -1,0 +1,39 @@
+package fsd;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test {
+    /*
+     * @param nums: A list of integers.
+     * @return: A list of permutations.
+     */
+	public static void main(String[] args) {
+		
+		System.out.println(new Test().permute(new int[]{1,2,5,4,3}));
+	}
+    public List<List<Integer>> permute(int[] nums) {
+        // write your code here
+    	 
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        List<Integer> list = new ArrayList<Integer>();
+        return add(nums,list,result);
+    }
+    
+    public  List<List<Integer>> add(int[] nums,List<Integer> list,List<List<Integer>> result){
+       if(list.size()==nums.length) {
+    	   List<Integer> temp= new ArrayList<Integer>();
+    	   temp.addAll(list);
+    	   result.add(temp);
+    	   return result;
+       }
+        for(int j=0;j<nums.length;j++){
+            if(!list.contains(nums[j])){
+                list.add(nums[j]);
+                add(nums,list,result);
+                list.remove(list.size()-1);
+            }
+        }
+      return result;
+    }
+}
