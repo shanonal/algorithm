@@ -1,0 +1,53 @@
+/**
+ *@author shanonal
+ *@date 2018年9月25日
+ *@see 
+ */
+package algorithm;
+
+/**
+ * @author shanonal
+ * @date 2018年9月25日
+ * <p></p>
+ * @since 1.0
+ */
+public class KMP {
+	
+	public static void main(String[] args){
+		String source = "fakhfieaavbalapewahpg";
+		String pattern = "ewahpg";
+		System.out.println(KMP.match(source, pattern,KMP.getNext(pattern)));
+	}
+	
+	public static int match(String source,String pattern,int[] next){
+		for(int i=0,j=-1;i<source.length() && j<pattern.length();){
+			if(j==-1 || pattern.charAt(j) == source.charAt(i)){
+				j++;
+				i++;
+			}else{
+				j = next[j];
+			}
+			if(j>=pattern.length()){
+				return i-pattern.length();
+			}
+		}
+		return 0;
+	}
+	public static int[] getNext(String pattern){
+		
+		int[] next = new int[pattern.length()];
+		int i=0,j=-1;
+		next[0] = -1;
+		while(i<pattern.length()-1){
+			if(j==-1 || pattern.charAt(i) == pattern.charAt(j)){
+				i++;j++;
+				if(pattern.charAt(i)!=pattern.charAt(j)) next[i] = j;
+				else next[i] = next[j];
+			}else{
+				j = next[j];
+			}
+		}
+		
+		return next;
+	}
+}
