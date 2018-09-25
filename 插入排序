@@ -1,0 +1,43 @@
+/**
+ *@author shanonal
+ *@date 2018年9月24日
+ *@see 
+ */
+package algorithm;
+
+/**
+ * @author shanonal
+ * @date 2018年9月24日
+ * <p></p>
+ * @since 1.0
+ */
+public class Insert {
+	public  static void main(String[] args){
+		int[] arr = new int[]{2,1,4,34,3,4,341,12,2};
+		Insert.sort(arr);
+		for(int k=0;k<arr.length;k++)
+			System.err.print(arr[k] + " ");
+	}
+	/**
+	 * 
+	 *@author shanonal
+	 *@date 2018年9月24日
+	 *@param arr
+	 *<p></p>
+	 *@since 1.0
+	 */
+	public static void sort(int[] arr){
+		int temp,j;
+		for(int i=1;i<arr.length;i++){
+			temp = arr[i];
+			for(j=i-1;j>=0;j--){
+				if(temp<arr[j]){
+					arr[j+1] = arr[j];
+				}else{
+					break;
+				}
+			}
+			arr[j+1] = temp;
+		}
+	}
+}
