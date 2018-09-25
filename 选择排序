@@ -1,0 +1,42 @@
+/**
+ *@author shanonal
+ *@date 2018年9月24日
+ *@see 
+ */
+package algorithm;
+
+/**
+ * @author shanonal
+ * @date 2018年9月24日
+ * <p></p>
+ * @since 1.0
+ */
+public class Select {
+	public  static void main(String[] args){
+		int[] arr = new int[]{2,1,4,34,3,4,341,12,2};
+		Select.sort(arr);
+		for(int k=0;k<arr.length;k++)
+			System.err.print(arr[k] + " ");
+	}
+	/**
+	 * 
+	 *@author shanonal
+	 *@date 2018年9月24日
+	 *@param arr
+	 *<p>select sort.Select the smallest number from the non-order serial,and then exchange the smallest number and 
+	 *the first number of non-order serial.</p>
+	 *@since 1.0
+	 */
+	public static void sort(int[] arr){
+		int temp,smallest;
+		for(int i=0;i<arr.length-1;i++){
+			smallest = i;
+			for(int j=i+1;j<arr.length;j++){
+				smallest = arr[smallest]>arr[j]?j:smallest;
+			}
+			temp = arr[i];
+			arr[i] = arr[smallest];
+			arr[smallest] = temp;
+		}
+	}
+}
