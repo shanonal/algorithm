@@ -1,0 +1,42 @@
+/**
+ *@author shanonal
+ *@date 2018年9月24日
+ *@see 
+ */
+package algorithm;
+
+/**
+ * @author shanonal
+ * @date 2018年9月24日
+ * <p></p>
+ * @since 1.0
+ */
+public class QuickSort {
+	public  static void main(String[] args){
+		int[] arr = new int[]{2,1,4,5,7,3,9,1};
+		QuickSort.sort(0, arr.length-1, arr);
+		for(int k=0;k<arr.length;k++)
+			System.out.print(arr[k] + " ");
+	}
+	public static void sort(int low,int high,int[] arr){
+		if(low>=high) return;
+		int mid = partion(low, high, arr);
+		sort(low, mid-1, arr);
+		sort(mid+1, high, arr);
+	}
+	public static int partion(int low,int high,int[] arr){
+		int key = arr[low];
+		while(low<high){
+			
+			while(low<high && arr[high] >= key){high--;}
+			arr[low] = arr[high];
+			
+			while(low<high && arr[low] <= key){low++;}
+			arr[high] = arr[low];
+			
+		}	
+		arr[low] = key;
+		return low;
+	}
+	
+}
